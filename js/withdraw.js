@@ -5,7 +5,7 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
   const newWithdrawAmountString = withdrawField.value;
   const newWithdrawAmount = parseFloat(newWithdrawAmountString);
 
-  // step 7: clear the withdraw field
+  // step 3: clear the withdraw field
   withdrawField.value = "";
 
   if (isNaN(newWithdrawAmount)) {
@@ -13,7 +13,7 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
     return;
   }
 
-  // step 3: get the current withdraw total
+  // step 5: get the current withdraw total
   const withdrawTotalElement = document.getElementById("withdraw-total");
   const previousWithdrawTotalString = withdrawTotalElement.innerText;
   const previousWithdrawTotal = parseFloat(previousWithdrawTotalString);
@@ -28,16 +28,13 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
     return;
   }
 
-  // step 4: add numbers to set the total withdraw
+  // step 6: add numbers to set the total withdraw
   const currentWithdrawTotal = newWithdrawAmount + previousWithdrawTotal;
   // set the withdraw total
   withdrawTotalElement.innerText = currentWithdrawTotal;
 
-  // step 6: calculate current total balance
+  // step 7: calculate current total balance
   const newBalanceTotal = previousBalanceTotal - currentWithdrawTotal;
   // set the balance total
   balanceTotalElement.innerText = newBalanceTotal;
-
-  // step 7: clear the withdraw field
-  withdrawField.value = "";
 });
