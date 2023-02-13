@@ -1,27 +1,19 @@
 // step 1: add event handler to the withdraw button
 document.getElementById("btn-withdraw").addEventListener("click", function () {
   // step 2: get the withdraw amount from the withdraw input field
-  const withdrawField = document.getElementById("withdraw-field");
-  const newWithdrawAmountString = withdrawField.value;
-  const newWithdrawAmount = parseFloat(newWithdrawAmountString);
-
   // step 3: clear the withdraw field
-  withdrawField.value = "";
+  const newWithdrawAmount = getInputValueById("withdraw-field");
 
   if (isNaN(newWithdrawAmount)) {
     alert("Please provide a valid number");
     return;
   }
 
-  // step 5: get the current withdraw total
-  const withdrawTotalElement = document.getElementById("withdraw-total");
-  const previousWithdrawTotalString = withdrawTotalElement.innerText;
-  const previousWithdrawTotal = parseFloat(previousWithdrawTotalString);
+  // step 4: get the current withdraw total
+  const previousWithdrawTotal = getTextElementValueById("withdraw-total");
 
   // step 5: get balance current total
-  const balanceTotalElement = document.getElementById("balance-total");
-  const previousBalanceTotalString = balanceTotalElement.innerText;
-  const previousBalanceTotal = parseFloat(previousBalanceTotalString);
+  const previousBalanceTotal = getTextElementValueById("balance-total");
 
   if (newWithdrawAmount > previousBalanceTotal) {
     alert("Baap er bank e ato taka nai");
@@ -31,10 +23,10 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
   // step 6: add numbers to set the total withdraw
   const currentWithdrawTotal = newWithdrawAmount + previousWithdrawTotal;
   // set the withdraw total
-  withdrawTotalElement.innerText = currentWithdrawTotal;
+  setTextElementValueById("withdraw-total", currentWithdrawTotal);
 
   // step 7: calculate current total balance
   const newBalanceTotal = previousBalanceTotal - currentWithdrawTotal;
   // set the balance total
-  balanceTotalElement.innerText = newBalanceTotal;
+  setTextElementValueById("balance-total", newBalanceTotal);
 });
